@@ -4,7 +4,7 @@
 #include <time.h>
 
 /* #define ED25519_DLL */
-#include "src/ed25519.h"
+#include "ed25519.h"
 
 #include "src/ge.h"
 #include "src/sc.h"
