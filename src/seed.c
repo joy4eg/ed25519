@@ -9,7 +9,7 @@
 
 int ed25519_create_seed(unsigned char *seed)
 {
-#ifndef ED25519_NO_SEED
+#if !ED25519_NO_SEED
 	return 1;
 #else
 #	ifdef _WIN32

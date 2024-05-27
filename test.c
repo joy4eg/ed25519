@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <time.h>
+#include <assert.h>
 
 /* #define ED25519_DLL */
 #include "ed25519.h"
@@ -24,7 +25,9 @@ int main() {
     const int message_len = strlen((char*) message);
 
     /* create a random seed, and a keypair out of that seed */
-    ed25519_create_seed(seed);
+    i = ed25519_create_seed(seed);
+    assert(i == 0);
+
     ed25519_create_keypair(public_key, private_key, seed);
 
     /* create signature on the message with the keypair */
@@ -117,7 +120,7 @@ int main() {
     end = clock();
 
     printf("%fus per signature\n", ((double) ((end - start) * 1000)) / CLOCKS_PER_SEC / i * 1000);
-    
+
 
     printf("testing keypair scalar addition performance: ");
     start = clock();
